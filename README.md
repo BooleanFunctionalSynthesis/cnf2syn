@@ -9,6 +9,10 @@ Download the code using git clone
 
 To make:
 
+You will need to install the following packages if they are not already installed in your system
+
+sudo apt install libreadline-dev libboost-all-dev libgmp-dev build-essential 
+
 To make nnf2syn, we first need to make the libraries it is dependent on. This can be done by running the install.sh script or
 alternatively using the following commands:
 1. cd dependencies/abc; make; make libabc.a; cd ../../
