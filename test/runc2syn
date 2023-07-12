@@ -1,0 +1,38 @@
+#! /bin/bash
+ulimit -v 8192000
+#ulimit -v 4096000
+ulimit -H -v
+
+for i in $1
+do
+        m=`basename $i .qdimacs`
+#        j=~/QBFEVAL_18_DATASET/qdimacs/${i}
+        echo $m $j
+        timeout 1h time -p  ../bin/c2syn $i  > ${m}.out 2> ${m}.times
+        if [ -f ${m}.syn.blif ]
+        then
+            ../bin/verify $j ${m}.syn.blif ${m}_varstoelim.txt
+        fi
+        if [ -f ${m}.checkA.qdimacs ]
+        then
+            ${HOME}/cadet-master/cadet ${m}.checkA.qdimacs
+        fi
+
+        if [ -f ${m}_norevsub.v ]
+        then
+           ../dependencies/bfss/bin/revsub ${m}_norevsub.v 
+           ../dependencies/bfss/bin/verify ${m}.v ${m}_result.v ${m}_varstoelim.txt
+        fi
+        if [ -f ${m}.semprop.txt ]
+        then
+            rm ${m}.semprop.txt
+        fi
+        if [ -f ${m}.dep.txt ]
+        then
+            rm ${m}.dep.txt
+        fi
+        if [ -f ${m}_0.qdimacs ]
+        then
+            rm ${m}_*.qdimacs
+        fi
+done
