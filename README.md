@@ -1,8 +1,8 @@
-This is the implemention of the cnf version of nnf2syn used in the paper:
+This is the implemention of the cnf2syn tool used for experiments in the paper:
 
 Tractable Representations for Boolean Functional Synthesis
 S. Akshay,  Supratik Chakraborty and Shetal Shah
-In  Annals of Mathematics and Artificial Intelligence, 2023
+submitted for review to Annals of Mathematics and Artificial Intelligence
 
 -----
 Download the code using git clone 
@@ -13,16 +13,16 @@ You will need to install the following packages if they are not already installe
 
 sudo apt install libreadline-dev libboost-all-dev libgmp-dev build-essential 
 
-To make nnf2syn, we first need to make the libraries it is dependent on. This can be done by running the install.sh script or
+To make cnf2syn, we first need to make the libraries it is dependent on. This can be done by running the install.sh script or
 alternatively using the following commands:
 1. cd dependencies/abc; make; make libabc.a; cd ../../
 2. cd dependencies/dsharp; make; make libdsharp.a; cd ../../
 3. cd dependencies/bfss; make; make libcombfss.a; cd ../../
-4. Finally do a make in the base directory. This will generate the binary nnf2syn in the bin directory
+4. Finally do a make in the base directory. This will generate the binary cnf2syn in the bin directory
 
 To run:
 
-To run nnf2syn use the following command ${PATH-TO-nnf2syn}/nn2syn {benchmark-name}.qdimacs
+To run cnf2syn use the following command ${PATH-TO-cnf2syn}/cnf2syn {benchmark-name}.qdimacs
 
 If you want the synNNF representation printed to a file please use the option --dumpResult while running the command above.
 The synNNF representation is printed in {benchmark-name}.syn.blif file.
@@ -30,7 +30,7 @@ The synNNF representation is printed in {benchmark-name}.syn.blif file.
 To verify the {benchmark-name}.syn.blif file use:
     ${PATH-TO-c2syn}/verify {benchmark-name}.qdimacs {benchmark-name}.syn.blif {benchmark-name}_varstoelim.txt
 
-Please see the script test/run-nnf2syn for more details.
+Please see the script test/run-cnf2syn for more details.
 
 Known issues:
 
