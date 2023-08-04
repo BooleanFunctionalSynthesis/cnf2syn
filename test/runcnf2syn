@@ -8,7 +8,7 @@ do
         m=`basename $i .qdimacs`
 #        j=~/QBFEVAL_18_DATASET/qdimacs/${i}
         echo $m $j
-        timeout 1h time -p  ../bin/c2syn $i  > ${m}.out 2> ${m}.times
+        timeout 1h time -p  ../bin/cnf2syn $i  > ${m}.out 2> ${m}.times
         if [ -f ${m}.syn.blif ]
         then
             ../bin/verify $j ${m}.syn.blif ${m}_varstoelim.txt
