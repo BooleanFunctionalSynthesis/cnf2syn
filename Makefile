@@ -62,9 +62,9 @@ Verify_SOURCES = $(SRCDIR)/verify.cpp
 Verify_OBJECTS  = $(Verify_SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 
-.PHONY: all clean remove nnf2syn directories
-all: nnf2syn  verify
-nnf2syn: directories $(TARGET_NNF2Syn)
+.PHONY: all clean remove cnf2syn directories
+all: cnf2syn  verify
+cnf2syn: directories $(TARGET_NNF2Syn)
 verify: $(TARGET_Verify)
 
 directories:
@@ -73,7 +73,7 @@ directories:
 
 $(TARGET_NNF2Syn): $(NNF2Syn_OBJECTS) 
 	$(CXX) $(CPP_FLAGS) -o $@ $^ $(LFLAGS)
-	@echo "Built Target! - nnf2syn"
+	@echo "Built Target! - cnf2syn"
 
 $(TARGET_Verify): $(Verify_OBJECTS) 
 	$(CXX) $(CPP_FLAGS) -o $@ $^ $(LFLAGS)
