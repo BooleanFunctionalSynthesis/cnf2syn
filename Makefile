@@ -5,7 +5,7 @@
 CPP_FLAGS += -DLIN64 -DGMP_BIGNUM -DNO_UNIGEN  # -fsanitize=address -fsanitize=leak
 BUILD=DEBUG
 
-NNF2Syn    = nnf2syn
+NNF2Syn    = cnf2syn
 Verify   = verify
 
 ABC_PATH = ./dependencies/abc
